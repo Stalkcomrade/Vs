@@ -35,15 +35,17 @@ const drawEntriesMultiLaneX = (g, data, groups, xScale, yScale, symbolSize, inte
                     const symbolGen = d3.symbol().size(symbolSize);
 
                     const symbol = g.append('path')
-                        .attr('transform', `translate(${xScale(entry.at)}, ${Y + H / 2})`)
-                        .attr('class', `entry ${entry.className ? entry.className : 'entry--point--default'}`)
+                          .attr('transform', `translate(${xScale(entry.at)}, ${Y + H / 2})`)
+                          .attr('class', `entry ${entry.className ? entry.className : 'entry--point--default'}`)
                           .attr('d', symbolGen.type(d3[entry.symbol] || d3['symbolCircle'])())
                           .attr('href', entry.link); 
 
                     symbol
                     .on('mouseover', showTip(entry.title))
                     .on('mouseout', hideTip)
-                    .on('click', function() {return window.location = entry.link})
+                    .on('click', function()  { return webstrate.restore(entry.link) });
+                    // .on('click', function()  { return webstrate.restore(entry.link) });
+                  // .on('click', function() {return window.location = entry.link})
                   
                 }
 
