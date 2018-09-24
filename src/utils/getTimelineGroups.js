@@ -10,15 +10,17 @@ import moment from 'moment';
  * @param {string} title
  * @param {string} symbol
  * @param {string} className
+ * @param {string} link
  * @constructor
  */
 class Point {
-    constructor(group, at, title, symbol, className) {
+  constructor(group, at, title, symbol, className, link) {
         this.group = group;
         this.at = at;
         this.title = title;
         this.symbol = symbol;
-        this.className = className;
+    this.className = className;
+    this.link = link;
     }
 }
 
@@ -57,7 +59,7 @@ const groupBy = (data) => {
 
     for (let i = 0, l = data.length; i < l; i += 1) {
         const entry = data[i],
-            { group, from, to, label, at, title, className, symbol } = entry;
+              { group, from, to, label, at, title, className, symbol, link } = entry;
 
         if (isDate(from) && isDate(to) && from < to && (isString(group) || isFunction(group.toString))) {
             dateTimeStart = !dateTimeStart
@@ -77,6 +79,8 @@ const groupBy = (data) => {
             }
         }
 
+      // Point definition 
+      
         else if (isDate(at) && (isString(group) || isFunction(group.toString))) {
             dateTimeStart = !dateTimeStart
                 ? at
@@ -87,11 +91,11 @@ const groupBy = (data) => {
                 : (dateTimeEnd < at ? at : dateTimeEnd);
 
             if (results[group]) {
-                results[group].push(new Point(group, at, title, symbol, className));
+              results[group].push(new Point(group, at, title, symbol, className, link));
             }
 
             else {
-                results[group] = [new Point(group, at, title, symbol, className)];
+              results[group] = [new Point(group, at, title, symbol, className, link)];
             }
         }
     }
