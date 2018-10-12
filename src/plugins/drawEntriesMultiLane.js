@@ -40,10 +40,12 @@ const drawEntriesMultiLaneX = (g, data, groups, xScale, yScale, symbolSize, inte
                           .attr('d', symbolGen.type(d3[entry.symbol] || d3['symbolCircle'])())
                           .attr('href', entry.link); 
 
-                    symbol
+                  symbol
                     .on('mouseover', showTip(entry.title))
+                  // .on('mouseover', showTip(entry.title))
                     .on('mouseout', hideTip)
-                    .on('click', function()  { return webstrate.restore(entry.link) });
+                    .on('click', function()  { return window.open('https://webstrates.cs.au.dk/' + entry.webstrateId + '/' + entry.link + '/?copy=tmpCopyOf_' + entry.webstrateId, '_blank') });
+                  // https://webstrates.cs.au.dk/dashboard-full/#/calendar
                     // .on('click', function()  { return webstrate.restore(entry.link) });
                   // .on('click', function() {return window.location = entry.link})
                   
