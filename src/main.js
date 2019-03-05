@@ -30,9 +30,9 @@ import L from 'leaflet';
 L.Icon.Default.imagePath = '.';
 
 L.Icon.Default.mergeOptions({
-  iconRetinaUrl: require('leaflet/dist/images/marker-icon-2x.png'),
-  iconUrl: require('leaflet/dist/images/marker-icon.png'),
-  shadowUrl: require('leaflet/dist/images/marker-shadow.png')
+    iconRetinaUrl: require('leaflet/dist/images/marker-icon-2x.png'),
+    iconUrl: require('leaflet/dist/images/marker-icon.png'),
+    shadowUrl: require('leaflet/dist/images/marker-shadow.png')
 });
 
 const install = (Vue, options = {}) => {
@@ -96,6 +96,7 @@ export {
     d3Sunburst,
     d3Tree,
     d3Pack,
+    d3Player,
     d3Cluster,
     d3ICicleVertical,
     d3ICicleHorizontal,
@@ -103,4 +104,3 @@ export {
     d3LChoropleth,
     d3LHeat,
 };
-
